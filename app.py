@@ -23,12 +23,25 @@ include_engagement_tips = st.checkbox("Include Engagement Tips")
 if st.button("Generate Ideas"):
     if user_prompt:
         prompt_text = f"""
-        You are a content idea generator for influencers and creators. Generate 10 creative and actionable content ideas based on this prompt: {user_prompt}.
-        Category: {category}.
-        Platform: {platform}.
+        You are a creative content strategist. Based on the inputs below, generate 10 innovative and actionable content ideas. Each idea should include a title, a brief description, and optionally include hashtags and engagement tips if specified. The content ideas should be categorized under {category} and specifically tailored for the {platform}.
+
+        User Prompt: {user_prompt}
+        Category: {category}
+        Platform: {platform}
         {"Include relevant hashtags for each idea." if include_hashtags else ""}
         {"Include engagement tips for each idea." if include_engagement_tips else ""}
-        Format the ideas as a numbered list with titles, descriptions, and additional features.
+        
+
+        Output Format:
+
+        Title: [Concise and catchy title]
+        Description: [Brief explanation of the idea and how it works]
+        Hashtags: [If requested]
+        Engagement Tip: [If requested]
+        
+        Generate content that is creative, relevant, and platform-specific (e.g., reels for Instagram, threads for X, shorts for YouTube). Avoid repetition and ensure variety in the ideas.
+
+
         """
 
         response = llm.invoke(prompt_text)
